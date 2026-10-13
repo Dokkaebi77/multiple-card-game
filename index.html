@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>234 Card Game</title>
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section id="screen-home" class="screen active">
+      <div class="hero-card">
+        <p class="eyebrow">234 CARD GAME</p>
+        <h1>234 Card Game</h1>
+        <p class="hero-copy">One device. One deck. Pass the phone and play together.</p>
+        <button class="primary big" data-action="go-player-count">Start</button>
+      </div>
+    </section>
+
+    <section id="screen-player-count" class="screen">
+      <button class="back-link" data-action="go-home">← Back</button>
+      <div class="panel">
+        <p class="eyebrow">SETUP</p>
+        <h2>How many players?</h2>
+        <p class="muted">Choose the number of people sharing this device.</p>
+        <div class="player-grid" id="player-count-buttons"></div>
+      </div>
+    </section>
+
+    <section id="screen-games" class="screen">
+      <button class="back-link" data-action="go-player-count">← Change players</button>
+      <div class="panel wide">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">GAME NIGHT</p>
+            <h2 id="games-title">Choose a game</h2>
+          </div>
+          <span id="player-pill" class="pill"></span>
+        </div>
+        <div id="game-list" class="game-list"></div>
+      </div>
+    </section>
+
+    <section id="screen-game-detail" class="screen">
+      <button class="back-link" data-action="go-games">← Back to games</button>
+      <div class="panel game-detail-panel">
+        <div class="game-icon" id="detail-icon">🂡</div>
+        <p class="eyebrow" id="detail-player-range"></p>
+        <h2 id="detail-title">One Card</h2>
+        <p id="detail-description" class="muted"></p>
+        <div class="detail-actions">
+          <button id="start-selected-game" class="primary big">Start Game</button>
+          <button id="how-to-play" class="secondary big">❓ How to Play</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-pass" class="screen">
+      <div class="pass-screen-card">
+        <div class="pass-icon">🙈</div>
+        <p class="eyebrow">PRIVATE TURN</p>
+        <h2 id="pass-title">Pass the phone</h2>
+        <p id="pass-message">Make sure nobody else can see the screen.</p>
+        <button id="ready-button" class="primary big">I'm ready</button>
+      </div>
+    </section>
+
+    <section id="screen-one-card" class="screen game-screen">
+      <header class="game-header">
+        <div>
+          <p class="eyebrow">ONE CARD</p>
+          <h2 id="turn-title">Player 1's turn</h2>
+        </div>
+        <div class="header-actions">
+          <button id="rules-small" class="icon-button">❓ Rules</button>
+          <button id="quit-game" class="icon-button">✕ Quit</button>
+        </div>
+      </header>
+
+      <div id="game-message" class="status-banner">Match the suit or rank.</div>
+
+      <section class="table-area">
+        <div class="opponent-strip" id="opponent-strip"></div>
+        <div class="table-center">
+          <div class="pile-block">
+            <span class="small-label">DRAW</span>
+            <button id="draw-pile" class="card-button" aria-label="Draw a card">
+              <img src="./assets/cards/card-back.png" alt="Draw pile" />
+            </button>
+          </div>
+          <div class="pile-block">
+            <span class="small-label">TOP CARD</span>
+            <div class="top-card-wrap">
+              <img id="top-card" class="top-card" alt="Top card" />
+              <div id="chosen-suit-badge" class="chosen-suit hidden"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hand-panel">
+        <div class="hand-heading">
+          <div>
+            <span class="small-label">YOUR HAND</span>
+            <strong id="hand-count">0 cards</strong>
+          </div>
+          <span id="one-card-badge" class="one-card-badge hidden">ONE CARD!</span>
+        </div>
+        <div id="player-hand" class="player-hand"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
